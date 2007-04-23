@@ -3,12 +3,12 @@
 
 Summary:	Generate a core dump of a running program without crashing
 Name:		coredumper
-Version:	0.2
-Release:	%mkrel 3
+Version:	1.1
+Release:	%mkrel 1
 License:	BSD
 Group:		System/Libraries
-URL:		http://goog-coredumper.sourceforge.net
-Source0:	http://prdownloads.sourceforge.net/goog-coredumper/%{name}-%{version}.tar.bz2
+URL:		http://code.google.com/p/google-coredumper/
+Source0:	http://google-coredumper.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		coredumper-0.2-libtool_fixes.diff
 BuildPrereq:	autoconf2.5
 BuildPrereq:	automake1.7
@@ -75,9 +75,8 @@ make check
 
 %makeinstall_std
 
-
 # cleanup
-rm -rf %{buildroot}%{_prefix}/doc
+rm -rf %{buildroot}%{_datadir}/doc
 
 %post -n %{libname} -p /sbin/ldconfig
 
@@ -88,7 +87,7 @@ rm -rf %{buildroot}%{_prefix}/doc
 
 %files -n %{libname}
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING ChangeLog README TODO
+%doc AUTHORS COPYING ChangeLog README
 %{_libdir}/lib*.so.*
 
 %files -n %{libname}-devel
@@ -98,3 +97,4 @@ rm -rf %{buildroot}%{_prefix}/doc
 %{_libdir}/lib*.a
 %{_libdir}/lib*.la
 %{_includedir}/google/*
+%{_mandir}/man3/*
