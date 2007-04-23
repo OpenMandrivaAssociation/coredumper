@@ -1,15 +1,11 @@
-%define name	coredumper
-%define version 0.2
-
 %define major 0
 %define libname	%mklibname %{name} %{major}
 
 Summary:	Generate a core dump of a running program without crashing
-Name:		%{name}
-Version:	%{version}
-Release:	%mkrel 2
+Name:		coredumper
+Version:	0.2
+Release:	%mkrel 3
 License:	BSD
-Group:		Development/Libraries
 Group:		System/Libraries
 URL:		http://goog-coredumper.sourceforge.net
 Source0:	http://prdownloads.sourceforge.net/goog-coredumper/%{name}-%{version}.tar.bz2
@@ -62,7 +58,7 @@ files for developing applications that use the coredumper library.
 %build
 export WANT_AUTOCONF_2_5=1
 rm -f configure
-libtoolize --copy --force && aclocal-1.7 && autoconf --force && automake-1.7
+libtoolize --copy --force; aclocal-1.7; autoconf --force; automake-1.7
 
 %serverbuild
 
@@ -102,4 +98,3 @@ rm -rf %{buildroot}%{_prefix}/doc
 %{_libdir}/lib*.a
 %{_libdir}/lib*.la
 %{_includedir}/google/*
-
