@@ -10,8 +10,8 @@ Group:		System/Libraries
 URL:		http://code.google.com/p/google-coredumper/
 Source0:	http://google-coredumper.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		coredumper-0.2-libtool_fixes.diff
-BuildPrereq:	autoconf2.5
-BuildPrereq:	automake1.7
+BuildRequires:	autoconf2.5
+BuildRequires:	automake1.7
 # gdb is needed by make check
 BuildRequires:	gdb
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
