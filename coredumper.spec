@@ -14,6 +14,7 @@ BuildRequires:	autoconf2.5
 BuildRequires:	automake1.7
 # gdb is needed by make check
 BuildRequires:	gdb
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The coredumper library can be compiled into applications to create
