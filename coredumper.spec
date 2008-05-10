@@ -1,15 +1,16 @@
-%define major 0
-%define libname	%mklibname %{name} %{major}
+%define major 1
+%define libname %mklibname %{name} %{major}
+%define develname %mklibname %{name} -d
 
 Summary:	Generate a core dump of a running program without crashing
 Name:		coredumper
-Version:	1.1
+Version:	1.2.1
 Release:	%mkrel 1
 License:	BSD
 Group:		System/Libraries
 URL:		http://code.google.com/p/google-coredumper/
 Source0:	http://google-coredumper.googlecode.com/files/%{name}-%{version}.tar.gz
-Patch0:		coredumper-0.2-libtool_fixes.diff
+Patch0:		coredumper-libtool_fixes.diff
 BuildRequires:	autoconf2.5
 BuildRequires:	automake1.7
 # gdb is needed by make check
@@ -32,15 +33,16 @@ core dumps of the running program, without termination. It
 supports both single- and multi-threaded core dumps, even if the
 kernel doesn't natively support for multi-threaded core files.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Generate a core dump of a running program without crashing
 Group:		Development/C
 Requires:	%{libname} = %{version}
 Provides:	coredumper-devel = %{version}
 Provides:	libcoredumper-devel = %{version}
 Obsoletes:	coredumper-devel libcoredumper-devel
+Obsoletes:	%{mklibname coredumper -d 0}
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 The coredumper library can be compiled into applications to create
 core dumps of the running program, without termination. It
 supports both single- and multi-threaded core dumps, even if the
@@ -55,6 +57,10 @@ files for developing applications that use the coredumper library.
 %setup -q
 %patch0 -p0 -b .libtool
 
+find . -type d -perm 0700 -exec chmod 755 {} \;
+find . -type f -perm 0555 -exec chmod 755 {} \;
+find . -type f -perm 0444 -exec chmod 644 {} \;
+
 %build
 export WANT_AUTOCONF_2_5=1
 rm -f configure
@@ -68,10 +74,11 @@ export CFLAGS="$CFLAGS -fPIC -DPIC"
 
 %make CFLAGS="$CFLAGS -fPIC -DPIC"
 
+%check
 make check
 
 %install
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %makeinstall_std
 
@@ -83,14 +90,14 @@ rm -rf %{buildroot}%{_datadir}/doc
 %postun -n %{libname} -p /sbin/ldconfig
 
 %clean
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING ChangeLog README
 %{_libdir}/lib*.so.*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc examples
 %{_libdir}/lib*.so
