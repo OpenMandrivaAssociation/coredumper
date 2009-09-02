@@ -11,6 +11,7 @@ Group:		System/Libraries
 URL:		http://code.google.com/p/google-coredumper/
 Source0:	http://google-coredumper.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		coredumper-libtool_fixes.diff
+Patch1:		coredumper-1.2.1-fix-build.diff
 BuildRequires:	autoconf2.5
 BuildRequires:	automake1.7
 # gdb is needed by make check
@@ -56,6 +57,7 @@ files for developing applications that use the coredumper library.
 
 %setup -q
 %patch0 -p0 -b .libtool
+%patch1 -p0 -b .tv
 
 find . -type d -perm 0700 -exec chmod 755 {} \;
 find . -type f -perm 0555 -exec chmod 755 {} \;
