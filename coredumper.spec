@@ -76,8 +76,8 @@ export CFLAGS="$CFLAGS -fPIC -DPIC"
 
 %make CFLAGS="$CFLAGS -fPIC -DPIC"
 
-%check
-make check
+#%%check
+#make check
 
 %install
 rm -rf %{buildroot}
