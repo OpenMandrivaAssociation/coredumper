@@ -5,7 +5,7 @@
 Summary:	Generate a core dump of a running program without crashing
 Name:		coredumper
 Version:	1.2.1
-Release:	%mkrel 6
+Release:	%mkrel 7
 License:	BSD
 Group:		System/Libraries
 URL:		http://code.google.com/p/google-coredumper/
