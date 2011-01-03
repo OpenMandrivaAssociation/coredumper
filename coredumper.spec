@@ -5,7 +5,7 @@
 Summary:	Generate a core dump of a running program without crashing
 Name:		coredumper
 Version:	1.2.1
-Release:	%mkrel 7
+Release:	%mkrel 8
 License:	BSD
 Group:		System/Libraries
 URL:		http://code.google.com/p/google-coredumper/
@@ -13,7 +13,7 @@ Source0:	http://google-coredumper.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		coredumper-libtool_fixes.diff
 Patch1:		coredumper-1.2.1-fix-build.diff
 BuildRequires:	autoconf2.5
-BuildRequires:	automake1.7
+BuildRequires:	automake
 # gdb is needed by make check
 BuildRequires:	gdb
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -66,7 +66,7 @@ find . -type f -perm 0444 -exec chmod 644 {} \;
 %build
 export WANT_AUTOCONF_2_5=1
 rm -f configure
-libtoolize --copy --force; aclocal-1.7; autoconf --force; automake-1.7
+libtoolize --copy --force; aclocal; autoconf --force; automake
 
 %serverbuild
 
