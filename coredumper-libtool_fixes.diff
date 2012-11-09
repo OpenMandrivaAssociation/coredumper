@@ -1,0 +1,21 @@
+--- Makefile.am	2008-04-02 01:37:59.000000000 +0200
++++ Makefile.am.oden	2008-05-10 13:17:00.000000000 +0200
+@@ -17,9 +17,6 @@
+ ## top-level boilerplate files.  Also add a TODO file if you have one.
+ dist_doc_DATA = AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
+ 
+-## The libraries (.so's) you want to install
+-lib_LTLIBRARIES =
+-
+ ## unittests you want to run when people type 'make check'.
+ ## TESTS is for binary unittests, check_SCRIPTS for script-based unittests.
+ ## TESTS_ENVIRONMENT sets environment variables for when you run unittest,
+@@ -63,7 +60,7 @@
+ 
+ ## vvvv RULES TO MAKE THE LIBRARIES, BINARIES, AND UNITTESTS
+ 
+-lib_LTLIBRARIES += libcoredumper.la
++lib_LTLIBRARIES = libcoredumper.la
+ LIBCOREDUMPER_INCLUDES = src/google/coredumper.h src/elfcore.h \
+                          src/linux_syscall_support.h src/linuxthreads.h \
+                          src/thread_lister.h
