@@ -8,7 +8,7 @@ Version:	1.2.1
 Release:	11
 License:	BSD
 Group:		System/Libraries
-Url:		http://code.google.com/p/google-coredumper/
+Url:		https://code.google.com/p/google-coredumper/
 Source0:	http://google-coredumper.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		coredumper-libtool_fixes.diff
 Patch1:		coredumper-1.2.1-fix-build.diff
