@@ -13,6 +13,8 @@ Source0:	http://google-coredumper.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		coredumper-libtool_fixes.diff
 Patch1:		coredumper-1.2.1-fix-build.diff
 Patch2:		coredumper-1.2.1-rosa-buildfix.patch
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	autoconf2.5
 BuildRequires:	automake
 # gdb is needed by make check
